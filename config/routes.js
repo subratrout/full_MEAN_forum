@@ -2,56 +2,70 @@ var users = require('./../server/controllers/users.js');
 var topics = require('./../server/controllers/topics.js');
 var comments = require('./../server/controllers/comments.js');
 var answers = require('./../server/controllers/answers.js');
-var bodyParser = require("body-parser");
-
 
 
 module.exports = function(app){
 
-	app.use(bodyParser.json());
+	
 
-	app.get('/customers', function(req, res){
+	app.get('/users', function(req, res){
 		customers.show(req,res);
 
 	});
 
-	app.post('/add_customer', function(req, res){
+	app.post('/add_user', function(req, res){
 		
-		customers.add(req,res);
+		users.add(req,res);
 	});
 
-	app.post('/remove_customer', function(req, res){
+	app.post('/remove_user', function(req, res){
 		
-		customers.remove(req,res);
+		users.remove(req,res);
 	});
 
-	app.get('/orders', function(req, res){
-		orders.show(req,res);
+	app.get('/topics', function(req, res){
+		topics.show(req,res);
 
 	});
 
-	app.post('/add_order', function(req, res){
+	app.post('/add_topic', function(req, res){
 		
-		orders.add(req,res);
+		topics.add(req,res);
 	});
 
-	app.post('/remove_order', function(req, res){
+	app.post('/remove_topic', function(req, res){
 		
-		orders.remove(req,res);
+		topics.remove(req,res);
 	});
 
-	app.get('/products', function(req, res){
-		products.show(req,res);
+	app.get('/answers', function(req, res){
+		answers.show(req,res);
 
 	});
 
-	app.post('/add_product', function(req, res){
+	app.post('/add_answer', function(req, res){
 
-		products.add(req,res);
+		answers.add(req,res);
+	});
+
+	app.post('/remove_answer', function(req, res){
+
+		answers.remove(req,res);
+	});
+
+	app.get('/comments', function(req, res){
+		comments.show(req,res);
+
+	});
+
+	app.post('/add_comment', function(req, res){
+
+		comments.add(req,res);
 	});
 
 	app.post('/remove_product', function(req, res){
 
-		products.remove(req,res);
+		comments.remove(req,res);
 	});
+
 }

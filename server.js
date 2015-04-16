@@ -7,12 +7,19 @@ var path = require('path');
 // instantiate the app
 var app = express();
 
+var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
 // set up a static file server that points to "client" directory
 app.use(express.static(path.join(__dirname, './client')));
 
 // This goes in our server.js file so that we actually use the mongoose config file!
 // Load mongoose before route loading
 require('./config/mongoose.js');
+
+
+
 
 // require routes file
 require('./config/routes.js')(app);
